@@ -112,7 +112,7 @@ public class CF121A {
     static void prno() {__out.println("no");}
     static void prn() {__out.println("No");}
     static void prN() {__out.println("NO");}
-    static void pryesno(boolean b) {__out.println(b ? "yes" : "no");};
+    static void pryesno(boolean b) {__out.println(b ? "yes" : "no");}
     static void pryn(boolean b) {__out.println(b ? "Yes" : "No");}
     static void prYN(boolean b) {__out.println(b ? "YES" : "NO");}
     static void prln(int... a) {for(int i = 0, len = a.length - 1; i < len; __out.print(a[i]), __out.print(' '), ++i); __out.println(a[a.length - 1]);}
