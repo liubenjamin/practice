@@ -1,10 +1,12 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF347B {
+public class CF327B {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
@@ -14,22 +16,8 @@ public class CF347B {
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
         int n = ri();
-        int[] a = ria(n);
-        int cnt = 0;
-        boolean both = false;
-
-        for(int i = 0; i < n; ++i) {
-            if(a[i] == i) ++cnt;
-        }
-        for(int i = 0; i < n; ++i) {
-            if(a[i] != i && a[a[i]] == i) {
-                cnt += 2;
-                both = true;
-                break;
-            }
-        }
-        if(!both && cnt != n) ++cnt;
-        prln(cnt);
+        for(int i = 0; i < n - 1; ++i) pr(n + i + " ");
+        prln(n + n - 1);
 
         close();
     }
