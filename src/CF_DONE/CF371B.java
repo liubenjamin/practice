@@ -1,10 +1,12 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF441B {
+public class CF371B {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
@@ -13,36 +15,27 @@ public class CF441B {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        int n = rni(), v = ni();
-        int[] a = new int[3002];
-        for(int i = 1; i <= n; ++i) {
-            a[rni()] += ni();
-        }
-        int sum = 0;
-        for(int i = 1; i <= 3001; ++i) {
-            int quota = v;
-            if(a[i - 1] >= quota) {
-                a[i - 1] -= quota;
-                sum += quota;
-                quota = 0;
-            } else if(a[i - 1] > 0){
-                quota -= a[i - 1];
-                sum += a[i - 1];
-                a[i - 1] = 0;
+        int a = rni(), b = ni();
+        int[] fac = new int[] { 2, 3, 5 }, aa = new int[3], bb = new int[3];
+
+        for(int i = 0; i < 3; ++i) {
+            while(a % fac[i] == 0) {
+                a /= fac[i];
+                ++aa[i];
             }
-            if(quota > 0) {
-                if(a[i] >= quota) {
-                    a[i] -= quota;
-                    sum += quota;
-                    // quota = 0; //unnecessary
-                } else if(a[i] > 0){
-                    // quota -= a[i]; //unnecessary
-                    sum += a[i];
-                    a[i] = 0;
-                }
+            while(b % fac[i] == 0) {
+                b /= fac[i];
+                ++bb[i];
             }
         }
-        prln(sum);
+        if(a != b) prln(-1);
+        else {
+            int sum = 0;
+            for(int i = 0; i < 3; ++i) {
+                sum += abs(aa[i] - bb[i]);
+            }
+            prln(sum);
+        }
 
         close();
     }
