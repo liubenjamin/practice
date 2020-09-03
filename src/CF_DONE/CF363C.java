@@ -1,10 +1,12 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF431C {
+public class CF363C {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
@@ -13,22 +15,26 @@ public class CF431C {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        int n = rni(), k = ni(), d = ni();
-        long[][] dp = new long[n+1][2];
-        dp[0][0] = 1;
-        for(int i = 1; i <= n; ++i) {
-            for(int j = 1; j <= k; ++j) {
-                if(i >= j) {
-                    if(j >= d) { // if edge of at least weight d
-                        dp[i][1] = (dp[i][1] + dp[i - j][0]) % IBIG; // second column contains paths that meet the condition
-                    } else {
-                        dp[i][0] = (dp[i][0] + dp[i - j][0]) % IBIG; // first column paths do not meet condition
-                    }
-                    dp[i][1] = (dp[i][1] + dp[i - j][1]) % IBIG; // consider paths that already meet condition
+        char[] s = rcha();
+        StringBuilder ans = new StringBuilder();
+        int rep = 0, next = 2;
+        for(int i = 0; i < s.length; ++i) {
+            if(i == 0 || s[i] != s[i - 1]) {
+                if(rep == 2) { // if previous 2 repeating, next 2 cannot be same
+                    next = 1;
+                } else { // next 2 repeating ok
+                    next = 2;
+                }
+                rep = 1; // new character, reset repetition
+                ans.append(s[i]);
+            } else {
+                if(rep < next) { // up to 2 repeating
+                    ans.append(s[i]);
+                    ++rep;
                 }
             }
         }
-        prln(dp[n][1]);
+        prln(ans);
 
         close();
     }
