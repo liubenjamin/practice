@@ -1,55 +1,39 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF166E {
+public class CF282C {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
-
-    static long[][] m;
-    static int n;
 
     public static void main(String[] args) throws IOException {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        n = ri();
-        m = new long[][] {{0, 1, 1, 1}, {1, 0, 1, 1}, {1, 1, 0, 1}, {1, 1, 1, 0}};
-        m = mat_pow(m, n);
-        prln(m[3][3]);
+        char[] a = rcha(), b = rcha();
+        boolean aa = false, bb = false;
+        if(a.length == b.length) {
+            for(int i = 0; i < a.length; ++i) {
+                if(a[i] == '1') aa = true;
+                if(b[i] == '1') bb = true;
+            }
+        }
+        if(a.length == 1) aa = false;
+        if(Arrays.equals(a,b)) {
+            aa = true;
+            bb = true;
+        }
+        prYN(aa && bb);
+
+
 
         close();
     }
-
-    // https://ideone.com/WiVoV0
-    static long[][] mat_pow(long[][] base, int pow) {
-        int n = base.length;
-        long[][] ans = new long[n][n];
-        for(int i = 0; i < n; ++i) ans[i][i] = 1;
-        while ( pow != 0 )	{
-            if	( (pow&1) != 0 )	ans = mat_mult(ans, base);
-            base = mat_mult(base, base);
-            pow >>= 1;
-        }
-        return ans;
-    }
-    static long[][] mat_mult(long[][] m1, long[][] m2) {
-        int n = m1.length;
-        long [][] ans = new long [n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                ans[i][j] = 0;
-                for (int k = 0; k < n; k++) {
-                    ans[i][j] = ((ans[i][j] + m1[i][k] * m2[k][j]) % IBIG);
-                }
-            }
-        }
-        return ans;
-    }
-
 
     // references
     // IBIG = 1e9 + 7
