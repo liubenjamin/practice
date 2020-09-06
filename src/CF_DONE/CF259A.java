@@ -6,7 +6,7 @@ import java.util.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF300A {
+public class CF259A {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
@@ -15,29 +15,13 @@ public class CF300A {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        int n = ri();
-        int[] a = ria(n);
-        List<Integer> pos = new ArrayList<>();
-        List<Integer> neg = new ArrayList<>();
-        List<Integer> zero = new ArrayList<>();
-        for(int x : a) {
-            if(x > 0) pos.add(x);
-            else if (x < 0) neg.add(x);
-            else zero.add(x);
+        for(int i = 0; i < 8; ++i) {
+            String s = rline();
+            if(!(s.equals("BWBWBWBW") || s.equals("WBWBWBWB"))) {
+                prN(); close(); return;
+            }
         }
-        if(pos.size() == 0) {
-            pos.add(neg.remove(0));
-            pos.add(neg.remove(0));
-        }
-        if(neg.size() % 2 == 0) {
-            zero.add(neg.remove(0));
-        }
-        pr(neg.size() + " " );
-        prln(neg);
-        pr(pos.size() + " " );
-        prln(pos);
-        pr(zero.size() + " " );
-        prln(zero);
+        prY();
 
         close();
     }
