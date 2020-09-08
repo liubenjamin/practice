@@ -13,7 +13,11 @@ public class CF235A {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        
+        int n = ri();
+        if(n < 3) prln(n);
+        else if(n % 2 == 0) {
+            prln((long) (n - 1) * (n - 3) * (n % 3 == 0 ? n - 2 : n));
+        } else prln((long) n * (n - 1) * (n - 2));
 
         close();
     }
