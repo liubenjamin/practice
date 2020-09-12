@@ -5,6 +5,7 @@
     <addNotNullAssertions enabled="false" />
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/src/CF_DONE" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/CF_WIP" includeSubdirectories="true" />
     </excludeFromCompile>
   </component>
 </project>
