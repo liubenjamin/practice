@@ -1,13 +1,10 @@
-package CF_DONE;
-
 import java.io.*;
 import java.util.*;
-import java.math.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-public class CF1406B {
+public class CF1418A {
     static BufferedReader __in;
     static PrintWriter __out;
     static StringTokenizer input;
@@ -15,31 +12,6 @@ public class CF1406B {
     public static void main(String[] args) throws IOException {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
-
-        int t = ri();
-        while(t --> 0) {
-            int n = ri();
-            r();
-            List<Integer> l = new ArrayList<>();
-            for(int i = 0; i < n; ++i) l.add(ni());
-            Collections.sort(l);
-            long a = 1, b = 1, c = 1;
-            // im blind so i used BigInteger during comp
-            for(int i = 0; i <= 3; ++i) {
-                a *= l.get(i);
-            }
-            a *= l.get(l.size() - 1);
-            for(int i = 1; i <= 5; ++i) {
-                b *= l.get(l.size() - i);
-            }
-            for(int i = 0; i <= 1; ++i) {
-                c *= l.get(i);
-            }
-            for(int i = 1; i <= 3; ++i) {
-                c *= l.get(l.size() - i);
-            }
-            prln(maxof(a, b, c));
-        }
 
         close();
     }
