@@ -1,3 +1,5 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
@@ -12,6 +14,12 @@ public class CF1418A {
     public static void main(String[] args) throws IOException {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
+
+        int t = ri();
+        while(t --> 0) {
+            int x = rni(), y = ni(), k = ni();
+            prln((k + (long) k * y - 1 + (x - 1) - 1) / (x - 1) + k);
+        }
 
         close();
     }
