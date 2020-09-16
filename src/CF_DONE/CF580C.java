@@ -1,3 +1,5 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +19,7 @@ public class CF580C {
 
         int n = rni(), m = ni(), c[] = new int[n + 1];
         r();
-        for(int i = 0; i < n; ++i) c[i] = ni();
+        for(int i = 1; i <= n; ++i) c[i] = ni();
         boolean vis[] = new boolean[n + 1];
         ArrayList<ArrayList<Integer>> g = new ArrayList<ArrayList<Integer>>();
         for(int i = 0; i <= n; ++i) g.add(new ArrayList<Integer>());
@@ -32,12 +34,6 @@ public class CF580C {
 
     static int dfs(ArrayList<ArrayList<Integer>> g, int[] c, int vert, int cats, int m, boolean[] vis) {
         vis[vert] = true;
-//        if(c[vert] == 1) ++cats;
-//        else {
-//            max = max(max, cats);
-//            cats = 0;
-//        }
-
         // c[vert] == 0 resets to 0
         // c[vert] == 1 adds 1
         cats = cats * c[vert] + c[vert];
