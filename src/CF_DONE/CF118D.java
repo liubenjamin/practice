@@ -1,4 +1,4 @@
-package CF_WIP;
+package CF_DONE;
 
 import java.io.*;
 import java.util.*;
@@ -15,20 +15,23 @@ public class CF118D {
         __in = new BufferedReader(new InputStreamReader(System.in));
         __out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        int n1 = rni(), n2 = ni(), k1 = ni(), k2 = ni(), mod = 100000000, dp[][][][] = new int[n1 + 5][n2 + 5][max(k1, k2) + 5][2];
-        for(int i = 0; i < n1; ++i) {
-            for(int j = 0; j < n2; ++j) {
-                for(int k = 0; k < k1; ++k) {
-                    dp[i + 1][j][k + 1][0] = (dp[i][]) % mod;
+        int n1 = rni(), n2 = ni(), k1 = ni(), k2 = ni(), mod = 100000000, dp[][][] = new int[n1 + 1][n2 + 1][2];
+        dp[0][0][0] = 1; dp[0][0][1] = 1;
+        for(int i = 0; i <= n1; ++i) {
+            for(int j = 0; j <= n2; ++j) {
+                for (int k = 1; k <= k1; ++k) {
+                    if(i >= k)
+                        dp[i][j][0] += dp[i - k][j][1];
                 }
-                for(int k = 0; k < k2; ++k) {
-
+                for (int k = 1; k <= k2; ++k) {
+                    if(j >= k)
+                        dp[i][j][1] += dp[i][j - k][0];
                 }
+                dp[i][j][0] %= 1e8;
+                dp[i][j][1] %= 1e8;
             }
         }
-
-        
-
+        prln((int) ((dp[n1][n2][0] + dp[n1][n2][1]) % 1e8));
         close();
     }
 
