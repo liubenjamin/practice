@@ -33,6 +33,8 @@ public class CF1419A {
                         continue next;
                     }
                 }
+                prln(2);
+                continue next;
             } else {
                 for(int i = 0; i < n; ++i) {
                     if((i + 1) % 2 == 0 && a[i] % 2 == 0) {
@@ -40,6 +42,8 @@ public class CF1419A {
                         continue next;
                     }
                 }
+                prln(1);
+                continue next;
             }
         }
 
