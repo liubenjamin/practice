@@ -6,6 +6,7 @@
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/src/CF_DONE" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/src/CF_WIP" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/AC_DONE" includeSubdirectories="true" />
     </excludeFromCompile>
   </component>
 </project>
