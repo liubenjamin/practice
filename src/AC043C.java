@@ -1,4 +1,29 @@
-// references
+import java.io.*;
+import java.util.*;
+
+import static java.lang.Math.*;
+import static java.util.Arrays.*;
+
+class AC043C {}
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        int n = ri(), a[] = ria(n);
+        long min = LMAX;
+        for(int i = -101; i < 101; ++i) {
+            int x = 0;
+            for(int aa : a) x += (long) (i - aa) * (i - aa);
+            min = min(min, x);
+        }
+        prln(min);
+        close();
+    }
+
+    static BufferedReader __in = new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter __out = new PrintWriter(new OutputStreamWriter(System.out));
+    static StringTokenizer input;
+
+    // references
     // IBIG = 1e9 + 7
     // IRAND ~= 3e8
     // IMAX ~= 2e10
@@ -63,11 +88,11 @@
     static void prno() {__out.println("no");}
     static void prn() {__out.println("No");}
     static void prN() {__out.println("NO");}
-    static void pryesno(boolean b) {__out.println(b ? "yes" : "no");}
+    static void pryesno(boolean b) {__out.println(b ? "yes" : "no");};
     static void pryn(boolean b) {__out.println(b ? "Yes" : "No");}
     static void prYN(boolean b) {__out.println(b ? "YES" : "NO");}
     static void prln(int... a) {for(int i = 0, len = a.length - 1; i < len; __out.print(a[i]), __out.print(' '), ++i); __out.println(a[a.length - 1]);}
     static void prln(long... a) {for(int i = 0, len = a.length - 1; i < len; __out.print(a[i]), __out.print(' '), ++i); __out.println(a[a.length - 1]);}
     static <T> void prln(Collection<T> c) {int n = c.size() - 1; Iterator<T> iter = c.iterator(); for(int i = 0; i < n; __out.print(iter.next()), __out.print(' '), ++i); __out.println(iter.next());}
     static void flush() {__out.flush();}
-    static void close() {__out.close();}
+    static void close() {__out.close();}}
