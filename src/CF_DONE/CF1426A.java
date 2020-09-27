@@ -4,18 +4,17 @@ import java.util.*;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-class AC043C {}
-
-class Main {
+public class CF1426A {
     public static void main(String[] args) throws IOException {
-        int n = ri(), a[] = ria(n);
-        long min = LMAX;
-        for(int i = -101; i < 101; ++i) {
-            int x = 0;
-            for(int aa : a) x += (long) (i - aa) * (i - aa);
-            min = min(min, x);
+        int t = ri();
+        next: while(t --> 0) {
+            int n = rni(), x = ni();
+            if(n == 1 || n == 2) {
+                prln(1);
+                continue next;
+            }
+            prln((int) (1 + (ceil((double) (n - 2) / x))));
         }
-        prln(min);
         close();
     }
 
