@@ -10,25 +10,12 @@ class AC045B {}
 
 class Main {
     public static void main(String[] args) throws IOException {
-        char[] a = rcha(), b = rcha(), c = rcha(), dmbs = {'A', 'B', 'C'};
-        char[][] decks = {a, b, c};
-        int[] ind = new int[3];
-        if(a.length == 0) {
-            prln('A');
-            close();
-            return;
+        char[][] deck = {rcha(), rcha(), rcha()};
+        int i = 0, len[] = {deck[0].length, deck[1].length, deck[2].length}, ind[] = {0, 0, 0};
+        while(ind[i] < len[i]) {
+            i = deck[i][ind[i]++] - 'a';
         }
-        char card = a[0];
-        ind[0]++;
-        while(true) {
-            int n = card - 'a';
-            if(ind[n] == decks[n].length) {
-                prln(dmbs[n]);
-                break;
-            }
-            card = decks[n][ind[n]++];
-            n = card - 'a';
-        }
+        prln((char) ('A' + i));
         close();
     }
 
