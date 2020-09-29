@@ -1,46 +1,29 @@
+package CF_DONE;
+
 import java.io.*;
 import java.util.*;
 
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 
-class AC045C {}
-
-class Main {
+public class CF115A {
     public static void main(String[] args) throws IOException {
-        char[] ss = rcha();
-        int n = ss.length, s[] = new int[n];
-        for(int i = 0; i < n; ++i) s[i] = ss[i] - '0';
-        boolean[] plus = new boolean[n - 1]; // n - 1 spaces between n items
-        prln(dfs(s, plus, 0));
+        int n = ri(), max = 0, parent[] = new int[n], depth[] = new int[n];
+        for(int i = 0; i < n; ++i)
+            parent[i] = ri() - 1;
+        // # groups = max depth
+        // each level will have no superiors
+        for(int i = 0; i < n; ++i) {
+            depth[i] = find(parent, depth, i);
+            max = max(max, depth[i]);
+        }
+        prln(max);
         close();
     }
-
-    static long dfs(int[] s, boolean[] plus, int i) {
-        // reach end and calculate sum of expression
-        if(i == plus.length) {
-            return sum(s, plus);
-        }
-        long ans = 0;
-        // choice to insert '+' in each spot
-        ans += dfs(s, plus, i + 1);
-        plus[i] = true;
-        ans += dfs(s, plus, i + 1);
-        plus[i] = false;
-        return ans;
-    }
-
-    static long sum(int[] s, boolean[] plus) {
-        long sum = 0, a = 0;
-        for(int i = 0; i < s.length; ++i) {
-            a = a * 10 + s[i];
-            if(i < s.length - 1 && plus[i]) {
-                sum += a;
-                a = 0;
-            }
-        }
-        sum += a;
-        return sum;
+    static int find(int[] parent, int[] depth, int i) {
+        if(depth[i] != 0) return depth[i]; // calculated already
+        if(parent[i] == -2) return depth[i] = 1; // no manager
+        return depth[i] = 1 + find(parent, depth, parent[i]);
     }
 
     static BufferedReader __in = new BufferedReader(new InputStreamReader(System.in));
