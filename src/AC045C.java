@@ -11,15 +11,36 @@ class Main {
         char[] ss = rcha();
         int n = ss.length, s[] = new int[n];
         for(int i = 0; i < n; ++i) s[i] = ss[i] - '0';
-        long ans = ss[0] + ss[n - 1];
-        for(int i = 0; i < n; ++i) {
-            for(int j = 0; j < n - i; ++j) {
-                ans += (i + 1) * ss[i] * Math.pow(10, j);
-                prln(ans);
+        boolean[] plus = new boolean[n - 1]; // n - 1 spaces between n items
+        prln(dfs(s, plus, 0));
+        close();
+    }
+
+    static long dfs(int[] s, boolean[] plus, int i) {
+        // reach end and calculate sum of expression
+        if(i == plus.length) {
+            return sum(s, plus);
+        }
+        long ans = 0;
+        // choice to insert '+' in each spot
+        ans += dfs(s, plus, i + 1);
+        plus[i] = true;
+        ans += dfs(s, plus, i + 1);
+        plus[i] = false;
+        return ans;
+    }
+
+    static long sum(int[] s, boolean[] plus) {
+        long sum = 0, a = 0;
+        for(int i = 0; i < s.length; ++i) {
+            a = a * 10 + s[i];
+            if(i < s.length - 1 && plus[i]) {
+                sum += a;
+                a = 0;
             }
         }
-        prln(ans);
-        close();
+        sum += a;
+        return sum;
     }
 
     static BufferedReader __in = new BufferedReader(new InputStreamReader(System.in));
