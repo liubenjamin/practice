@@ -6,7 +6,7 @@ import static java.util.Arrays.*;
 
 class AC${problem} {}
 
-class Main {
+class AC_DONE.Main {
     public static void main(String[] args) throws IOException {
 
         close();
